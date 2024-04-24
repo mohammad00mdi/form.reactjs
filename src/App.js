@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import Form1 from './component/form';
+
+
+const SavedForm = () => {
+  const savedValues = JSON.parse(localStorage.getItem("formValues"));
+  console.log(savedValues , 'savedValues');
+  return (
+    <div style={{direction:"rtl"}}>
+      <h2>اطلاعات</h2>
+      <p>نام: {savedValues?.name}</p>
+      <p>نام خانوادگی: {savedValues?.family}</p>
+      <p>جنسیت: {savedValues?.gender==="women"?"زن":savedValues?.gender==="men" ? "مرد" : ""}</p>
+      <p>ایمیل: {savedValues?.email}</p>
+      <p>شماره موبایل: {savedValues?.contact}</p>
+      <p>لینک: {savedValues?.url}</p>
+      
+    </div>
+  );
+};
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form1/>
+      <SavedForm/>
     </div>
   );
 }
